@@ -22,7 +22,6 @@ public class Add extends BinaryExpression {
     }
     @Override
     public double evaluate(double x, double y){return x + y;}
-
     @Override
     public int getPriority() {
         return 2;

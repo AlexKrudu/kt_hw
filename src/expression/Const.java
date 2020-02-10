@@ -40,6 +40,10 @@ public class Const implements CommonExpression {
     public double evaluate(double x){
         return value.doubleValue();
     }
+    @Override
+    public int evaluate(int x, int y, int z){
+        return value.intValue();
+    }
 
     @Override
     public int getPriority() {

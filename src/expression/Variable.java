@@ -4,6 +4,7 @@ import java.util.Objects;
 
 public class Variable implements CommonExpression {
     private String name;
+
     public Variable(String name) {
         this.name = name;
     }
@@ -29,18 +30,33 @@ public class Variable implements CommonExpression {
     }
 
     @Override
+    public int evaluate(int x, int y, int z) {
+        if (this.name.equals("x")){
+            return x;
+        }
+        if (this.name.equals("y")){
+            return y;
+        }
+        return z;
+    }
+
+    @Override
     public int evaluate(int value) {
         return value;
     }
+
     @Override
-    public double evaluate(double value){return value;}
+    public double evaluate(double value) {
+        return value;
+    }
 
     @Override
     public int getPriority() {
         return 0;
     }
+
     @Override
-    public int hashCode(){
+    public int hashCode() {
         return name.hashCode();
     }
 }

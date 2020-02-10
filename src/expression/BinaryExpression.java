@@ -8,7 +8,7 @@ public abstract class BinaryExpression implements CommonExpression {
 
     @Override
     public boolean equals(Object other) {
-        if (other == null){
+        if (other == null) {
             return false;
         }
         if (this.getClass().equals(other.getClass())) {
@@ -17,16 +17,26 @@ public abstract class BinaryExpression implements CommonExpression {
         }
         return false;
     }
+
     @Override
-    public int evaluate(int x){
-        return evaluate(left.evaluate(x),right.evaluate(x));
-    };
+    public int evaluate(int x, int y, int z) {
+        return evaluate(left.evaluate(x, y, z), right.evaluate(x, y, z));
+    }
+
     @Override
-    public double evaluate(double x){
+    public int evaluate(int x) {
         return evaluate(left.evaluate(x), right.evaluate(x));
     }
+
+
+    @Override
+    public double evaluate(double x) {
+        return evaluate(left.evaluate(x), right.evaluate(x));
+    }
+
     protected abstract int evaluate(int x, int y);
     protected abstract double evaluate(double x, double y);
+
     @Override
     public int hashCode() {
         return (13 * left.hashCode() + 17) * right.hashCode() + 19 * getClass().hashCode();
