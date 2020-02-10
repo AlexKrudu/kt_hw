@@ -1,4 +1,5 @@
 import expression.*;
+
 public class Main {
     private static Integer evaluate(final Expression expression, final int x) {
         try {
@@ -9,8 +10,13 @@ public class Main {
     }
 
     public static void main(String[] args) {
-        DoubleExpression exp1 = new Add(new Variable("x"), new Const(2.0));
-        double x = exp1.evaluate(2.3);
-        System.out.println(x);
+        Expression exp1 = new Add(new Variable("x"), new Const(2));
+        Expression exp2 = x -> x+2;
+        for (int i = 0; i < 10; i++) {
+            int x1 = exp1.evaluate(i);
+            int x2 = exp2.evaluate(i);
+            System.out.println(x1);
+            System.out.println(x2);
+        }
     }
 }

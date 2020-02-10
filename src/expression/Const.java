@@ -10,7 +10,7 @@ public class Const implements CommonExpression {
 
     @Override
     public String toString() {
-        return Integer.toString(value.intValue());
+        return String.valueOf(value);
     }
 /*
     @Override

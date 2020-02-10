@@ -23,7 +23,7 @@ public abstract class BinaryExpression implements CommonExpression {
     };
     @Override
     public double evaluate(double x){
-        return evaluate(left.evaluate(x), right.evaluate(x);
+        return evaluate(left.evaluate(x), right.evaluate(x));
     }
     protected abstract int evaluate(int x, int y);
     protected abstract double evaluate(double x, double y);
@@ -32,6 +32,6 @@ public abstract class BinaryExpression implements CommonExpression {
         return (13 * left.hashCode() + 17) * right.hashCode() + 19 * getClass().hashCode();
     }
 
-    Expression left;
-    Expression right;
+    CommonExpression left;
+    CommonExpression right;
 }
