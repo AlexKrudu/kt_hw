@@ -35,11 +35,12 @@ public abstract class BinaryExpression implements CommonExpression {
     }
 
     protected abstract int evaluate(int x, int y);
+
     protected abstract double evaluate(double x, double y);
 
     @Override
     public int hashCode() {
-        return (13 * left.hashCode() + 17) * right.hashCode() + 19 * getClass().hashCode();
+        return (2 * left.hashCode() + 2) * right.hashCode() + 8 * getClass().hashCode();
     }
 
     CommonExpression left;

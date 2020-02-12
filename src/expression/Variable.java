@@ -31,10 +31,10 @@ public class Variable implements CommonExpression {
 
     @Override
     public int evaluate(int x, int y, int z) {
-        if (this.name.equals("x")){
+        if (this.name.equals("x")) {
             return x;
         }
-        if (this.name.equals("y")){
+        if (this.name.equals("y")) {
             return y;
         }
         return z;

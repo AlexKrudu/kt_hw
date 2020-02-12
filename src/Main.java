@@ -1,4 +1,5 @@
 import expression.*;
+import expression.parser.*;
 
 public class Main {
     private static Integer evaluate(final Expression expression, final int x) {
@@ -10,7 +11,9 @@ public class Main {
     }
 
     public static void main(String[] args) {
-        TripleExpression exp1 = new Add(new Variable("x"), new Variable("y"));
-        System.out.println(exp1.evaluate(1,2,1));
+        TripleExpression expression1 = new Subtract(new Const(3), new Const(2));
+        TripleExpression expression2 = new Add(new Const(3), new Const(2));
+        System.err.println(expression1.equals(expression2));
+        TripleExpression exp = new ExpressionParser().parse("x+y+z-2*3/8");
     }
 }

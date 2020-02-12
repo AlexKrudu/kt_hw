@@ -9,19 +9,21 @@ public class Multiply extends BinaryExpression {
     public String toString() {
         return '(' + left.toString() + " * " + right.toString() + ')';
     }
-/*
-    @Override
-    public String toMiniString() {
-        Pair p = this.getMiniStrings();
-        return p.getKey() + " * " + p.getValue();
-    }
-*/
+
+    /*
+        @Override
+        public String toMiniString() {
+            Pair p = this.getMiniStrings();
+            return p.getKey() + " * " + p.getValue();
+        }
+    */
     @Override
     public int evaluate(int x, int y) {
         return x * y;
     }
+
     @Override
-    public double evaluate(double x, double y){
+    public double evaluate(double x, double y) {
         return x * y;
     }
 

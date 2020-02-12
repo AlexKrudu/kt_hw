@@ -21,8 +21,11 @@ public class Divide extends BinaryExpression {
     public int evaluate(int x, int y) {
         return x / y;
     }
+
     @Override
-    public double evaluate(double x, double y){return x/y;}
+    public double evaluate(double x, double y) {
+        return x / y;
+    }
 
     @Override
     public int getPriority() {

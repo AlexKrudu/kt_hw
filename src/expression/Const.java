@@ -6,17 +6,21 @@ public class Const implements CommonExpression {
     public Const(int value) {
         this.value = value;
     }
-    public Const(double value){this.value = value;}
+
+    public Const(double value) {
+        this.value = value;
+    }
 
     @Override
     public String toString() {
         return String.valueOf(value);
     }
-/*
-    @Override
-    public String toMiniString() {
-        return Integer.toString(value);
-}*/
+
+    /*
+        @Override
+        public String toMiniString() {
+            return Integer.toString(value);
+    }*/
     @Override
     public boolean equals(Object other) {
         if (other instanceof Const) {
@@ -28,7 +32,7 @@ public class Const implements CommonExpression {
     }
 
     @Override
-    public int hashCode(){
+    public int hashCode() {
         return value.hashCode();
     }
 
@@ -36,12 +40,14 @@ public class Const implements CommonExpression {
     public int evaluate(int x) {
         return value.intValue();
     }
+
     @Override
-    public double evaluate(double x){
+    public double evaluate(double x) {
         return value.doubleValue();
     }
+
     @Override
-    public int evaluate(int x, int y, int z){
+    public int evaluate(int x, int y, int z) {
         return value.intValue();
     }
 
