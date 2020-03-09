@@ -43,10 +43,10 @@ public class ExpressionParser {
         while (tokens.hasNext()) {
             switch (cur.getType()) {
                 case MULTIPLY:
-                    prim = new Multiply((CommonExpression) prim, (CommonExpression) Term());
+                    prim = new Multiply((CommonExpression) prim, (CommonExpression) Factor());
                     break;
                 case DIVIDE:
-                    prim = new Divide((CommonExpression) prim, (CommonExpression) Term());
+                    prim = new Divide((CommonExpression) prim, (CommonExpression) Factor());
                     break;
                 case RBRACKET:
                 case ADD:
