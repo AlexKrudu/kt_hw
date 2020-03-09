@@ -10,9 +10,30 @@ public class ExpressionParser {
 
     public TripleExpression parse(String expression) {
         tokens = new Tokener(expression);
-        return Expression();
+        return Shifts();
     }
 
+    private TripleExpression Shifts() {
+        TripleExpression res = Expression();
+        Token cur = tokens.getCur();
+        loop:
+        while (tokens.hasNext()) {
+            switch (cur.getType()) {
+                case LSHIFT:
+                    res = new LeftShift((CommonExpression) res, (CommonExpression) Expression());
+                    break;
+                case RSHIFT:
+                    res = new RightShift((CommonExpression) res, (CommonExpression) Expression());
+                    break;
+                case RBRACKET:
+                    break loop;
+                default:
+                    throw new RuntimeException("govno");
+            }
+            cur = tokens.getCur();
+        }
+        return res;
+    }
 
     private TripleExpression Expression() {
         TripleExpression ter = Term();
@@ -27,6 +48,8 @@ public class ExpressionParser {
                     ter = new Subtract((CommonExpression) ter, (CommonExpression) Term());
                     break;
                 case RBRACKET:
+                case LSHIFT:
+                case RSHIFT:
                     break loop;
                 default:
                     throw new RuntimeException("govno");
@@ -51,6 +74,8 @@ public class ExpressionParser {
                 case RBRACKET:
                 case ADD:
                 case SUBTRACT:
+                case RSHIFT:
+                case LSHIFT:
                     break loop;
                 default:
                     throw new RuntimeException("govno");
@@ -73,7 +98,7 @@ public class ExpressionParser {
                 tokens.getNext();
                 break;
             case LBRACKET:
-                vc = Expression();
+                vc = Shifts();
                 tokens.getNext();
                 break;
             case SUBTRACT:

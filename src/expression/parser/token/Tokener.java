@@ -20,6 +20,16 @@ public class Tokener {
                 continue;
             }
             switch (exp.charAt(i)) {
+                case '>':
+                    if (exp.charAt(i+1) == '>'){
+                        tokens.add(new Token(i, TokenType.RSHIFT, ">>"));
+                    }
+                    break;
+                case '<':
+                    if (exp.charAt(i+1) == '<'){
+                        tokens.add(new Token(i, TokenType.LSHIFT, "<<"));
+                    }
+                    break;
                 case '+':
                     tokens.add(new Token(i, TokenType.ADD, "+"));
                     break;
