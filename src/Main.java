@@ -14,6 +14,7 @@ public class Main {
         TripleExpression expression1 = new Subtract(new Const(3), new Const(2));
         TripleExpression expression2 = new Add(new Const(3), new Const(2));
         System.err.println(expression1.equals(expression2));
-        TripleExpression exp = new ExpressionParser().parse("x+y+z-2*3/8");
+        TripleExpression exp = new ExpressionParser().parse("x / y / z");
+        System.out.println(exp.evaluate(0, 1, 2));
     }
 }

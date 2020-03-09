@@ -71,6 +71,10 @@ public class Tokener {
         return tokens.get(pos);
     }
 
+    public Token getLast() {
+        return tokens.get(--pos);
+    }
+
     public boolean hasNext() {
         return pos + 1 < tokens.size();
     }

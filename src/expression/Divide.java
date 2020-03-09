@@ -1,5 +1,7 @@
 package expression;
 
+import static java.lang.Math.round;
+
 public class Divide extends BinaryExpression {
     public Divide(CommonExpression left, CommonExpression right) {
         super(left, right);
@@ -19,7 +21,7 @@ public class Divide extends BinaryExpression {
     */
     @Override
     public int evaluate(int x, int y) {
-        return x / y;
+        return  (x / y);
     }
 
     @Override

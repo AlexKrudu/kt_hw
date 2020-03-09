@@ -1,9 +1,6 @@
 package expression.parser;
 
-import expression.Add;
-import expression.Const;
-import expression.TripleExpression;
-import expression.Variable;
+import expression.*;
 import expression.parser.token.*;
 
 public class ExpressionParser {
@@ -14,39 +11,84 @@ public class ExpressionParser {
     public TripleExpression parse(String expression) {
         tokens = new Tokener(expression);
         return Expression();
-
     }
 
+
     private TripleExpression Expression() {
-        TripleExpression res = Term();
-        return res;
+        TripleExpression ter = Term();
+        Token cur = tokens.getCur();
+        loop:
+        while (tokens.hasNext()) {
+            switch (cur.getType()) {
+                case ADD:
+                    ter = new Add((CommonExpression) ter, (CommonExpression) Term());
+                    break;
+                case SUBTRACT:
+                    ter = new Subtract((CommonExpression) ter, (CommonExpression) Term());
+                    break;
+                case RBRACKET:
+                    break loop;
+                default:
+                    throw new RuntimeException("govno");
+            }
+            cur = tokens.getCur();
+        }
+        return ter;
     }
 
     private TripleExpression Term() {
-        TripleExpression fac = Factor();
-        return fac;
-    }
-
-    private TripleExpression Factor() {
-        TripleExpression prim = VarsAndConst();
+        TripleExpression prim = Factor();
+        Token cur = tokens.getCur();
+        loop:
+        while (tokens.hasNext()) {
+            switch (cur.getType()) {
+                case MULTIPLY:
+                    prim = new Multiply((CommonExpression) prim, (CommonExpression) Term());
+                    break;
+                case DIVIDE:
+                    prim = new Divide((CommonExpression) prim, (CommonExpression) Term());
+                    break;
+                case RBRACKET:
+                case ADD:
+                case SUBTRACT:
+                    break loop;
+                default:
+                    throw new RuntimeException("govno");
+            }
+            cur = tokens.getCur();
+        }
         return prim;
     }
 
-    private TripleExpression VarsAndConst() {
+    private TripleExpression Factor() {
         TripleExpression vc;
         Token token = tokens.getNext();
         switch (token.getType()) {
             case VARIABLE:
                 vc = new Variable(token.value());
+                tokens.getNext();
                 break;
             case CONST:
                 vc = new Const(Integer.parseInt(token.value()));
+                tokens.getNext();
                 break;
             case LBRACKET:
                 vc = Expression();
+                tokens.getNext();
+                break;
+            case SUBTRACT:
+                if (tokens.getNext().getType() == TokenType.CONST) {
+                    vc = new Const(Integer.parseInt('-' + tokens.getCur().value()));
+                    tokens.getNext();
+                    return vc;
+                }
+                tokens.getLast();
+                vc = new Negate((CommonExpression) Factor());
+                break;
             default:
-                vc = new Const(2);
+                throw new RuntimeException("govno");
         }
+
         return vc;
     }
 }
