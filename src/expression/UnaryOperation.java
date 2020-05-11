@@ -1,5 +1,8 @@
 package expression;
 
+import expression.myExceptions.OverflowExceprion;
+import expression.myExceptions.ParsingException;
+
 public abstract class UnaryOperation implements CommonExpression {
     UnaryOperation(CommonExpression exp) {
         this.exp = exp;
@@ -17,7 +20,7 @@ public abstract class UnaryOperation implements CommonExpression {
     }
 
     @Override
-    public int evaluate(int x, int y, int z) {
+    public int evaluate(int x, int y, int z) throws ParsingException {
         return evaluate(exp.evaluate(x, y, z));
     }
 
@@ -26,6 +29,8 @@ public abstract class UnaryOperation implements CommonExpression {
     public int hashCode() {
         return (2 * exp.hashCode() + 2) + 8 * getClass().hashCode();
     }
+
+    protected abstract void validate(int x) throws OverflowExceprion, ParsingException;
 
     CommonExpression exp;
 }

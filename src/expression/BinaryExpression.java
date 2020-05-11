@@ -1,5 +1,8 @@
 package expression;
 
+import expression.myExceptions.OverflowExceprion;
+import expression.myExceptions.ParsingException;
+
 public abstract class BinaryExpression implements CommonExpression {
     BinaryExpression(CommonExpression left, CommonExpression right) {
         this.left = left;
@@ -19,12 +22,12 @@ public abstract class BinaryExpression implements CommonExpression {
     }
 
     @Override
-    public int evaluate(int x, int y, int z) {
+    public int evaluate(int x, int y, int z) throws ParsingException {
         return evaluate(left.evaluate(x, y, z), right.evaluate(x, y, z));
     }
 
     @Override
-    public int evaluate(int x) {
+    public int evaluate(int x) throws ParsingException {
         return evaluate(left.evaluate(x), right.evaluate(x));
     }
 
@@ -34,7 +37,9 @@ public abstract class BinaryExpression implements CommonExpression {
         return evaluate(left.evaluate(x), right.evaluate(x));
     }
 
-    protected abstract int evaluate(int x, int y);
+    protected abstract int evaluate(int x, int y) throws ParsingException;
+
+    protected abstract void validate(int x, int y) throws ParsingException;
 
     protected abstract double evaluate(double x, double y);
 

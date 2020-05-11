@@ -1,8 +1,10 @@
 package expression;
 
+import expression.myExceptions.ParsingException;
+
 /**
  * @author Georgiy Korneev (kgeorgiy@kgeorgiy.info)
  */
 public interface TripleExpression extends ToMiniString {
-    int evaluate(int x, int y, int z);
+    int evaluate(int x, int y, int z) throws ParsingException;
 }
