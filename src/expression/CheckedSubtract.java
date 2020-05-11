@@ -37,8 +37,4 @@ public class CheckedSubtract extends BinaryExpression {
         }
     }
 
-    @Override
-    public int getPriority() {
-        return 2;
-    }
 }

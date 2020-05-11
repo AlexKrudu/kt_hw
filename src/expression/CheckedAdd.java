@@ -29,9 +29,4 @@ public class CheckedAdd extends BinaryExpression {
             throw new OverflowExceprion("");
         }
     }
-
-    @Override
-    public int getPriority() {
-        return 2;
-    }
 }

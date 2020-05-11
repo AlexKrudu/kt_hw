@@ -3,7 +3,6 @@ package expression.parser.token;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
-import java.util.Set;
 
 import expression.myExceptions.*;
 
@@ -14,9 +13,7 @@ public class Tokener {
     private String expression;
     public int pos = -1;
     private int brackets = 0;
-    private int value;
-    private Set<String> potential_words = Set.of("x", "y", "z", "log2", "pow2");
-    private Map<String, TokenType> operations = Map.ofEntries(
+    private Map<String, TokenType> toToken = Map.ofEntries(
             entry("+", TokenType.ADD),
             entry("-", TokenType.SUBTRACT),
             entry("*", TokenType.MULTIPLY),
@@ -45,71 +42,40 @@ public class Tokener {
             if (Character.isWhitespace(exp.charAt(i))) {
                 continue;
             }
-            switch (exp.charAt(i)) {
-                case '+':
-                    tokens.add(new Token(i, TokenType.ADD, "+"));
-                    break;
-                case '-':
-                    tokens.add(new Token(i, TokenType.SUBTRACT, "-"));
-                    break;
-                case '*':
-                    tokens.add(new Token(i, TokenType.MULTIPLY, "*"));
-                    break;
-                case '/':
-                    tokens.add(new Token(i, TokenType.DIVIDE, "/"));
-                    break;
-                case '(':
+            if (toToken.containsKey(String.valueOf(exp.charAt(i)))) {
+                tokens.add(new Token(i, toToken.get(String.valueOf(exp.charAt(i))), String.valueOf(exp.charAt(i))));
+                if ("(".equals(String.valueOf(exp.charAt(i)))) {
                     brackets++;
-                    tokens.add(new Token(i, TokenType.LBRACKET, "("));
-                    break;
-                case ')':
+                } else if (")".equals(String.valueOf(exp.charAt(i)))) {
                     brackets--;
                     if (brackets < 0) {
                         throw new UnexpectedClosingParenthesisException(exp, i);
                     }
-                    tokens.add(new Token(i, TokenType.RBRACKET, ")"));
-                    break;
-                case 'x':
-                    tokens.add(new Token(i, TokenType.VARIABLE, "x"));
-                    break;
-                case 'y':
-                    tokens.add(new Token(i, TokenType.VARIABLE, "y"));
-                    break;
-                case 'z':
-                    tokens.add(new Token(i, TokenType.VARIABLE, "z"));
-                    break;
-                default:
-                    int j = i;
-                    if (Character.isLetterOrDigit(exp.charAt(j))){
-                        while (Character.isLetterOrDigit(exp.charAt(j))){
-                            j++;
-                            if (j == exp.length()){
-                                break;
-                            }
-                        }
-                    }
-                    if (potential_words.contains(exp.substring(i, j))){
-                        if (exp.substring(i, j).equals("pow2")){
-                            tokens.add(new Token(i, TokenType.POW2, exp.substring(i, j)));
-                            i = j -1;
-                            break;
-                        }
-                        else if (exp.substring(i, j).equals("log2")){
-                            tokens.add(new Token(i, TokenType.LOG2, exp.substring(i, j)));
-                            i = j - 1;
+                }
+            } else {
+                int j = i;
+                if (Character.isLetterOrDigit(exp.charAt(j))) {
+                    while (Character.isLetterOrDigit(exp.charAt(j))) {
+                        j++;
+                        if (j == exp.length()) {
                             break;
                         }
                     }
-                    if (Character.isDigit(exp.charAt(i))) {
-                        tokens.add(new Token(i, TokenType.CONST, exp.substring(i, j)));
-                        i = j - 1;
-                    } else {
-                        if (j - i > 1){
-                            throw new UnexpectedWordException(exp, i, j);
-                        }
-                        throw new UnexpectedSymbolException(exp, i);
+                }
+                if (toToken.containsKey(exp.substring(i, j))) {
+                    tokens.add(new Token(i, toToken.get(exp.substring(i, j)), exp.substring(i, j)));
+                    i = j - 1;
+                    continue;
+                }
+                if (Character.isDigit(exp.charAt(i))) {
+                    tokens.add(new Token(i, TokenType.CONST, exp.substring(i, j)));
+                    i = j - 1;
+                } else {
+                    if (j - i > 1) {
+                        throw new UnexpectedWordException(exp, i, j);
                     }
-
+                    throw new UnexpectedSymbolException(exp, i);
+                }
             }
         }
         tokens.add(new Token(exp.length(), TokenType.END, "end"));

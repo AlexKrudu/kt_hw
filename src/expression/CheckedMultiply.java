@@ -41,8 +41,4 @@ public class CheckedMultiply extends BinaryExpression {
         return x * y;
     }
 
-    @Override
-    public int getPriority() {
-        return 1;
-    }
 }

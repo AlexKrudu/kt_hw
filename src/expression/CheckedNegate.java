@@ -13,11 +13,6 @@ public class CheckedNegate extends UnaryOperation {
     }
 
     @Override
-    public int getPriority() {
-        return 0;
-    }
-
-    @Override
     public double evaluate(double x) {
         return -x;
     }

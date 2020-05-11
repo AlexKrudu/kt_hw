@@ -17,11 +17,6 @@ public class CheckedLog2 extends UnaryOperation {
     }
 
     @Override
-    public int getPriority() {
-        return 0;
-    }
-
-    @Override
     public double evaluate(double x) {
         return 0;
     }

@@ -45,8 +45,4 @@ public class CheckedDivide extends BinaryExpression {
         }
     }
 
-    @Override
-    public int getPriority() {
-        return 1;
-    }
 }

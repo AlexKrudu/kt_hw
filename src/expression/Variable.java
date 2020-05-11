@@ -51,11 +51,6 @@ public class Variable implements CommonExpression {
     }
 
     @Override
-    public int getPriority() {
-        return 0;
-    }
-
-    @Override
     public int hashCode() {
         return name.hashCode();
     }

@@ -51,11 +51,5 @@ public class Const implements CommonExpression {
         return value.intValue();
     }
 
-    @Override
-    public int getPriority() {
-        return 0;
-    }
-
-
     private final Number value;
 }
