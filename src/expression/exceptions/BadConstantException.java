@@ -1,4 +1,4 @@
-package expression.myExceptions;
+package expression.exceptions;
 
 public class BadConstantException extends ParsingException {
     public BadConstantException(String word, int ind) {

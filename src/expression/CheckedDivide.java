@@ -1,8 +1,8 @@
 package expression;
 
-import expression.myExceptions.OverflowExceprion;
-import expression.myExceptions.ParsingException;
-import expression.myExceptions.ZeroDivisionException;
+import expression.exceptions.OverflowExceprion;
+import expression.exceptions.ParsingException;
+import expression.exceptions.ZeroDivisionException;
 
 import static java.lang.Math.round;
 

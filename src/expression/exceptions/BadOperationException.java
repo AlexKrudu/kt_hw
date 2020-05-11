@@ -1,4 +1,4 @@
-package expression.myExceptions;
+package expression.exceptions;
 
 public class BadOperationException extends ParsingException {
     public BadOperationException(String message) {

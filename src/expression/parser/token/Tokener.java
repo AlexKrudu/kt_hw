@@ -4,7 +4,10 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
-import expression.myExceptions.*;
+import expression.exceptions.ParsingException;
+import expression.exceptions.UnexpectedClosingParenthesisException;
+import expression.exceptions.UnexpectedSymbolException;
+import expression.exceptions.UnexpectedWordException;
 
 import static java.util.Map.entry;
 

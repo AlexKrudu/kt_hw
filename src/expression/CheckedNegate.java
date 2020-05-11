@@ -1,6 +1,6 @@
 package expression;
 
-import expression.myExceptions.OverflowExceprion;
+import expression.exceptions.OverflowExceprion;
 
 public class CheckedNegate extends UnaryOperation {
     public CheckedNegate(CommonExpression exp) {

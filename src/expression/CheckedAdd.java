@@ -1,6 +1,6 @@
 package expression;
 
-import expression.myExceptions.OverflowExceprion;
+import expression.exceptions.OverflowExceprion;
 
 public class CheckedAdd extends BinaryExpression {
     public CheckedAdd(CommonExpression left, CommonExpression right) {

@@ -1,8 +1,8 @@
 package expression;
 
 
-import expression.myExceptions.OverflowExceprion;
-import expression.myExceptions.ParsingException;
+import expression.exceptions.OverflowExceprion;
+import expression.exceptions.ParsingException;
 
 public class CheckedPow2 extends UnaryOperation {
     public CheckedPow2(CommonExpression arg) {

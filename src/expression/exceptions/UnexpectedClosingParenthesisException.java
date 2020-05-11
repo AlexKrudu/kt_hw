@@ -1,4 +1,4 @@
-package expression.myExceptions;
+package expression.exceptions;
 
 public class UnexpectedClosingParenthesisException extends ParsingException {
     public UnexpectedClosingParenthesisException(String word, int ind) {

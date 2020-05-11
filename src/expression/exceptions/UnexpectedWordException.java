@@ -1,4 +1,4 @@
-package expression.myExceptions;
+package expression.exceptions;
 
 public class UnexpectedWordException extends ParsingException {
     public UnexpectedWordException(String word, int ind1, int ind2) {

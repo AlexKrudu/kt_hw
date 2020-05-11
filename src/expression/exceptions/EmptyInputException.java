@@ -1,4 +1,4 @@
-package expression.myExceptions;
+package expression.exceptions;
 
 public class EmptyInputException extends ParsingException {
     public EmptyInputException(String message) {

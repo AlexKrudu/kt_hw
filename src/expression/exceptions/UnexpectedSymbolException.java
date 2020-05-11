@@ -1,4 +1,4 @@
-package expression.myExceptions;
+package expression.exceptions;
 
 public class UnexpectedSymbolException extends ParsingException {
     public UnexpectedSymbolException(String word, int ind) {

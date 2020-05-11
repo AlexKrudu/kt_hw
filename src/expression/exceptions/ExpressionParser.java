@@ -1,7 +1,6 @@
-package expression.parser;
+package expression.exceptions;
 
 import expression.*;
-import expression.myExceptions.*;
 import expression.parser.token.*;
 
 import java.util.EnumSet;

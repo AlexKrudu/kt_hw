@@ -1,7 +1,7 @@
 package expression;
 
-import expression.myExceptions.OverflowExceprion;
-import expression.myExceptions.ParsingException;
+import expression.exceptions.OverflowExceprion;
+import expression.exceptions.ParsingException;
 
 public abstract class UnaryOperation implements CommonExpression {
     UnaryOperation(CommonExpression exp) {

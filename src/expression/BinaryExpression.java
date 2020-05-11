@@ -1,7 +1,6 @@
 package expression;
 
-import expression.myExceptions.OverflowExceprion;
-import expression.myExceptions.ParsingException;
+import expression.exceptions.ParsingException;
 
 public abstract class BinaryExpression implements CommonExpression {
     BinaryExpression(CommonExpression left, CommonExpression right) {

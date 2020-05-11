@@ -1,4 +1,4 @@
-package expression.myExceptions;
+package expression.exceptions;
 
 public class ZeroDivisionException extends ParsingException {
     public ZeroDivisionException(String message) {

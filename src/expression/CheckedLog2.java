@@ -1,8 +1,8 @@
 package expression;
 
-import expression.myExceptions.BadOperationException;
-import expression.myExceptions.OverflowExceprion;
-import expression.myExceptions.ParsingException;
+import expression.exceptions.BadOperationException;
+import expression.exceptions.OverflowExceprion;
+import expression.exceptions.ParsingException;
 
 public class CheckedLog2 extends UnaryOperation {
     public CheckedLog2(CommonExpression exp) {

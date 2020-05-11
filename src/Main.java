@@ -1,6 +1,5 @@
-import expression.*;
-import expression.myExceptions.ParsingException;
-import expression.parser.*;
+import expression.exceptions.ExpressionParser;
+import expression.exceptions.ParsingException;
 
 public class Main {
     public static void main(String[] args) throws ParsingException {

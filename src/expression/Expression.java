@@ -1,6 +1,6 @@
 package expression;
 
-import expression.myExceptions.ParsingException;
+import expression.exceptions.ParsingException;
 
 /**
  * @author Georgiy Korneev (kgeorgiy@kgeorgiy.info)
