@@ -1,55 +1,18 @@
 package expression;
 
-import java.util.Objects;
+public class Const<T> implements TripleExpressionGeneric<T> {
+    private T value;
 
-public class Const implements CommonExpression {
-    public Const(int value) {
-        this.value = value;
+    public Const(T x) {
+        value = x;
     }
 
-    public Const(double value) {
-        this.value = value;
-    }
-
-    @Override
-    public String toString() {
-        return String.valueOf(value);
-    }
-
-    /*
-        @Override
-        public String toMiniString() {
-            return Integer.toString(value);
-    }*/
-    @Override
-    public boolean equals(Object other) {
-        if (other instanceof Const) {
-            Const co = (Const) other;
-            return this.value.doubleValue() == co.value.doubleValue();
-        } else {
-            return false;
-        }
-    }
-
-    @Override
-    public int hashCode() {
-        return value.hashCode();
-    }
-
-    @Override
-    public int evaluate(int x) {
-        return value.intValue();
-    }
-
-    @Override
-    public double evaluate(double x) {
-        return value.doubleValue();
+    public T evaluate(T x, T y, T z) {
+        return value;
     }
 
     @Override
     public int evaluate(int x, int y, int z) {
-        return value.intValue();
+        return 0;
     }
-
-    private final Number value;
 }

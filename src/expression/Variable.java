@@ -1,57 +1,26 @@
 package expression;
 
-import java.util.Objects;
-
-public class Variable implements CommonExpression {
+public class Variable<T> implements TripleExpressionGeneric<T> {
     private String name;
 
-    public Variable(String name) {
-        this.name = name;
+    public Variable(String x) {
+        name = x;
     }
 
-    @Override
-    public String toString() {
-        return name;
-    }
-
-    /*
-        @Override
-        public String toMiniString() {
-            return name;
+    public T evaluate(T x, T y, T z) {
+        switch (name) {
+            case "x":
+                return x;
+            case "y":
+                return y;
+            case "z":
+                return z;
         }
-    */
-    @Override
-    public boolean equals(Object other) {
-        if (other instanceof Variable) {
-            return this.name.equals(((Variable) other).name);
-        } else {
-            return false;
-        }
+        return x;
     }
 
     @Override
     public int evaluate(int x, int y, int z) {
-        if (this.name.equals("x")) {
-            return x;
-        }
-        if (this.name.equals("y")) {
-            return y;
-        }
-        return z;
-    }
-
-    @Override
-    public int evaluate(int value) {
-        return value;
-    }
-
-    @Override
-    public double evaluate(double value) {
-        return value;
-    }
-
-    @Override
-    public int hashCode() {
-        return name.hashCode();
+        return 0;
     }
 }

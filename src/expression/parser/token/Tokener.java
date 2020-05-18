@@ -11,7 +11,7 @@ import expression.exceptions.UnexpectedWordException;
 
 import static java.util.Map.entry;
 
-public class Tokener {
+public class Tokener<T> {
     private List<Token> tokens = new ArrayList<>();
     private String expression;
     public int pos = -1;
