@@ -1,4 +1,3 @@
-import expression.exceptions.ExpressionParser;
 import expression.exceptions.ParsingException;
 
 public class Main {

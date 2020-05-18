@@ -1,10 +1,9 @@
-package expression.exceptions;
+package expression.parser;
 
 import expression.*;
+import expression.exceptions.*;
 import expression.operations.Operation;
-import expression.parser.token.Token;
-import expression.parser.token.TokenType;
-import expression.parser.token.Tokener;
+import expression.parser.token.*;
 
 import java.util.EnumSet;
 import java.util.Set;

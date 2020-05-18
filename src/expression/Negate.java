@@ -16,4 +16,14 @@ public class Negate<T> extends UnaryExpression<T> {
     public int evaluate(int x, int y, int z) {
         return 0;
     }
+
+    @Override
+    public double evaluate(double x) {
+        return 0;
+    }
+
+    @Override
+    public int evaluate(int x) {
+        return 0;
+    }
 }
