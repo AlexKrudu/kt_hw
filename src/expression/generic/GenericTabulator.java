@@ -7,12 +7,14 @@ import expression.operations.*;
 import java.util.HashMap;
 
 public class GenericTabulator implements Tabulator {
-    private final static HashMap<String, Operation<?>> MODES = new HashMap<>();
+    private final static HashMap<String, Operation<? extends Object>> MODES = new HashMap<>();
 
     static {
         MODES.put("i", new IntegerOperation());
         MODES.put("bi", new BigIntegerOperation());
         MODES.put("d", new DoubleOperation());
+        MODES.put("l", new LongOperation());
+        MODES.put("s", new ShortOperation());
     }
 
     public Object[][][] tabulate(String mode, String expression, int x1, int x2, int y1, int y2, int z1, int z2) {
